@@ -1,0 +1,98 @@
+.reveal-viewport,
+.reveal {
+  --r-main-font: "IBM Plex Sans", sans-serif;
+  --r-heading-font: "IBM Plex Sans", sans-serif;
+  font-family: "IBM Plex Sans", sans-serif;
+}
+
+#title-slide::before {
+  content: "";
+  display: block;
+  width: clamp(12rem, 26vw, 18rem);
+  aspect-ratio: 1;
+  margin: 0 auto 1.5rem;
+  background: url("assets/logo3.svg") center / contain no-repeat;
+}
+
+#title-slide h1.title {
+  color: #172b40;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 600;
+  font-size: 1.6em;
+}
+
+.reveal .color-intersection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 430px;
+  padding: 1rem 0;
+}
+
+.reveal .color-orb {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: clamp(16rem, 35vw, 23rem);
+  aspect-ratio: 1;
+  padding: clamp(2rem, 5vw, 3.5rem);
+  border-radius: 50%;
+  text-align: center;
+}
+
+.reveal .color-orb h3 {
+  margin: 0;
+  color: inherit;
+  font-size: 0.95em;
+  font-weight: 600;
+}
+
+.reveal .color-orb p {
+  margin: 0.35rem 0 0;
+  color: inherit;
+  font-size: 0.5em;
+  opacity: 0.78;
+}
+
+.reveal h2.slide-title {
+  font-size: 0.8em;
+}
+
+.reveal .color-orb p.color-hex {
+  margin-top: 0.55rem;
+  font-size: 0.45em;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.reveal .value-orb {
+  z-index: 1;
+  background: #d8b773;
+  color: #172b40;
+}
+
+.reveal .time-orb {
+  z-index: 2;
+  margin-right: -5rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: #172b40;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .reveal .color-intersection {
+    min-height: 0;
+  }
+
+  .reveal .color-orb {
+    width: 52vw;
+    padding: 1.5rem;
+  }
+
+  .reveal .time-orb {
+    margin-right: -3rem;
+  }
+}

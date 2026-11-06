@@ -1,0 +1,23 @@
+---
+title: "Introducing Münz"
+format:
+  revealjs:
+    embed-resources: true
+    css: styles.css
+    include-in-header: google-fonts.html
+---
+
+<!--
+Time is money, but money can’t buy time
+-->
+
+<div class="color-intersection">
+<div class="color-orb time-orb">
+<h3>Time</h3>
+<p class="color-hex">#172B40</p>
+</div>
+<div class="color-orb value-orb">
+<h3>Value</h3>
+<p class="color-hex">#D8B773</p>
+</div>
+</div>

@@ -1,0 +1,251 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- 5-zackiger EU-Stern -->
+    <g id="euro-star">
+      <polygon
+        points="0,-4.5 1.3,-1.4 4.5,-1.4 1.9,0.6 2.9,3.8 0,1.8 -2.9,3.8 -1.9,0.6 -4.5,-1.4 -1.3,-1.4"
+        fill="#172B40"
+      />
+    </g>
+
+    <!-- 4 Sekundenstriche zwischen zwei vollen Stunden (im Euro-Grau) -->
+    <g id="sec-tick-group">
+      <line x1="180" y1="168" x2="180" y2="173" transform="rotate(6 180 256)" />
+      <line x1="180" y1="168" x2="180" y2="173" transform="rotate(12 180 256)" />
+      <line x1="180" y1="168" x2="180" y2="173" transform="rotate(18 180 256)" />
+      <line x1="180" y1="168" x2="180" y2="173" transform="rotate(24 180 256)" />
+    </g>
+
+    <style>
+      .stroke-main {
+        stroke: #172B40;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      /* ================= ANIMATIONEN (ZENTRIERTER START BEI X=256) ================= */
+      /* 
+         Beide Elemente starten bei X=256 (Mitte) und bewegen sich je 76px nach außen.
+         Rollwinkel ohne Rutschen: s / r = 76px / 104px ≈ 41.87°
+      */
+
+      /* 1. UHR: Translation von der Mitte (X=256, also +76px) nach links (X=180, also 0px) */
+      #watch-slider {
+        animation: watchSlide 3.5s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+      }
+
+      @keyframes watchSlide {
+        0% { transform: translateX(76px); }
+        53%, 84% { transform: translateX(0px); }
+        100% { transform: translateX(76px); }
+      }
+
+      /* 2. UHR: Rollbewegung nach links um 41.9° ins Lot (0°) */
+      #watch-rotator {
+        transform-origin: 180px 256px;
+        animation: watchTurn 3.5s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+      }
+
+      @keyframes watchTurn {
+        0% { transform: rotate(41.9deg); }
+        53%, 84% { transform: rotate(0deg); }
+        100% { transform: rotate(41.9deg); }
+      }
+
+      /* 3. ZEIGER: Stundenzeiger (6 Uhr -> 10 Uhr) */
+      #hour-hand {
+        transform-origin: 180px 256px;
+        animation: hourAnim 3.5s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+      }
+
+      @keyframes hourAnim {
+        0% { transform: rotate(180deg); }
+        53%, 84% { transform: rotate(305deg); }
+        100% { transform: rotate(180deg); }
+      }
+
+      /* 4. ZEIGER: Minutenzeiger (12 Uhr -> 2 Uhr / 10 nach) */
+      #minute-hand {
+        transform-origin: 180px 256px;
+        animation: minuteAnim 3.5s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+      }
+
+      @keyframes minuteAnim {
+        0% { transform: rotate(0deg); }
+        53%, 84% { transform: rotate(420deg); }
+        100% { transform: rotate(0deg); }
+      }
+
+      /* 5. MÜNZE: Translation von der Mitte (X=256, also -76px) nach rechts (X=332, also 0px) */
+      #coin-slider {
+        animation: coinSlide 3.5s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+      }
+
+      @keyframes coinSlide {
+        0% { transform: translateX(-76px); }
+        53%, 84% { transform: translateX(0px); }
+        100% { transform: translateX(-76px); }
+      }
+
+      /* 6. MÜNZE: Rollbewegung nach rechts um 41.9° ins Lot (0°), sodass der 1er gerade steht */
+      #coin-rotator {
+        transform-origin: 332px 256px;
+        animation: coinRoll 3.5s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+      }
+
+      @keyframes coinRoll {
+        0% { transform: rotate(-41.9deg); }
+        53%, 84% { transform: rotate(0deg); }
+        100% { transform: rotate(-41.9deg); }
+      }
+    </style>
+  </defs>
+
+  <!-- ================= 1-EURO-MÜNZE (HINTER DER UHR, ROLLT NACH RECHTS) ================= -->
+  <g id="coin-slider">
+    <g id="coin-rotator">
+      <!-- Äußerer Goldring -->
+      <circle
+        cx="332"
+        cy="256"
+        r="104"
+        fill="#D8B773"
+        stroke="#172B40"
+        stroke-width="6"
+      />
+
+      <!-- Innerer Silberkern -->
+      <circle
+        cx="332"
+        cy="256"
+        r="72"
+        fill="#FFFFFF"
+        stroke="#172B40"
+        stroke-width="3"
+      />
+
+      <!-- Subtile Euro-Grau-Linien auf dem Kern -->
+      <g opacity="0.25">
+        <line x1="346" y1="222" x2="346" y2="290" stroke="#172B40" stroke-width="1.5" stroke-linecap="round" />
+        <line x1="356" y1="216" x2="356" y2="296" stroke="#172B40" stroke-width="1.5" stroke-linecap="round" />
+        <line x1="366" y1="214" x2="366" y2="298" stroke="#172B40" stroke-width="1.5" stroke-linecap="round" />
+        <line x1="376" y1="218" x2="376" y2="294" stroke="#172B40" stroke-width="1.5" stroke-linecap="round" />
+        <line x1="386" y1="226" x2="386" y2="286" stroke="#172B40" stroke-width="1.5" stroke-linecap="round" />
+      </g>
+
+      <!-- Die "1" (steht am Ende exakt senkrecht) -->
+      <path
+        d="M 307 248 
+           L 323 232 
+           L 333 232 
+           L 333 280 
+           L 322 280 
+           L 322 247 
+           L 312 255 Z"
+        fill="#172B40"
+      />
+
+      <!-- "EURO"-Schriftzug -->
+      <text
+        x="340"
+        y="262"
+        font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif"
+        font-size="14.5"
+        font-weight="900"
+        letter-spacing="1.5"
+        fill="#172B40"
+      >EURO</text>
+
+      <!-- 12 Sterne auf dem Goldring -->
+      <use href="#euro-star" x="332" y="168" />
+      <use href="#euro-star" x="376" y="180" />
+      <use href="#euro-star" x="408" y="212" />
+      <use href="#euro-star" x="420" y="256" />
+      <use href="#euro-star" x="408" y="300" />
+      <use href="#euro-star" x="376" y="332" />
+      <use href="#euro-star" x="332" y="344" />
+      <use href="#euro-star" x="288" y="332" />
+      <use href="#euro-star" x="256" y="300" />
+      <use href="#euro-star" x="244" y="256" />
+      <use href="#euro-star" x="256" y="212" />
+      <use href="#euro-star" x="288" y="180" />
+    </g>
+  </g>
+
+  <!-- ================= UHR (VORNE, ROLLT NACH LINKS) ================= -->
+  <g id="watch-slider">
+    <g id="watch-rotator">
+      <!-- Zifferblatt-Hintergrund -->
+      <circle
+        cx="180"
+        cy="256"
+        r="104"
+        fill="#FFFFFF"
+        stroke="#172B40"
+        stroke-width="6"
+      />
+
+      <!-- Sekundenstriche (im Euro-Grau) -->
+      <g stroke="#172B40" stroke-width="1.5" stroke-linecap="round" opacity="0.25">
+        <use href="#sec-tick-group" />
+        <use href="#sec-tick-group" transform="rotate(30 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(60 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(90 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(120 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(150 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(180 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(210 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(240 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(270 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(300 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(330 180 256)" />
+      </g>
+
+      <!-- Haupt-Stundenstriche (12, 3, 6, 9) -->
+      <line x1="180" y1="166" x2="180" y2="181" class="stroke-main" stroke-width="4" />
+      <line x1="255" y1="256" x2="270" y2="256" class="stroke-main" stroke-width="4" />
+      <line x1="180" y1="331" x2="180" y2="346" class="stroke-main" stroke-width="4" />
+      <line x1="90" y1="256" x2="105" y2="256" class="stroke-main" stroke-width="4" />
+
+      <!-- Neben-Stundenstriche -->
+      <line x1="220" y1="186.7" x2="225" y2="178.1" class="stroke-main" stroke-width="2.5" />
+      <line x1="249.3" y1="216" x2="257.9" y2="211" class="stroke-main" stroke-width="2.5" />
+      <line x1="249.3" y1="296" x2="257.9" y2="301" class="stroke-main" stroke-width="2.5" />
+      <line x1="220" y1="325.3" x2="225" y2="333.9" class="stroke-main" stroke-width="2.5" />
+      <line x1="140" y1="325.3" x2="135" y2="333.9" class="stroke-main" stroke-width="2.5" />
+      <line x1="110.7" y1="296" x2="102.1" y2="301" class="stroke-main" stroke-width="2.5" />
+      <line x1="110.7" y1="216" x2="102.1" y2="211" class="stroke-main" stroke-width="2.5" />
+      <line x1="140" y1="186.7" x2="135" y2="178.1" class="stroke-main" stroke-width="2.5" />
+
+      <!-- Stundenzeiger (wandert relativ zum Zifferblatt von 6 auf 10 Uhr) -->
+      <line
+        id="hour-hand"
+        x1="180"
+        y1="256"
+        x2="180"
+        y2="211"
+        class="stroke-main"
+        stroke-width="6.5"
+      />
+
+      <!-- Minutenzeiger (wandert relativ zum Zifferblatt von 12 auf 2 Uhr) -->
+      <line
+        id="minute-hand"
+        x1="180"
+        y1="256"
+        x2="180"
+        y2="198"
+        class="stroke-main"
+        stroke-width="6.5"
+      />
+
+      <!-- Mittelpunkt-Abdeckung -->
+      <circle
+        cx="180"
+        cy="256"
+        r="4"
+        fill="#172B40"
+      />
+    </g>
+  </g>
+</svg>
