@@ -106,7 +106,7 @@ Your browser does not support video playback.
 <g class="scribble-labels">
 <text x="450" y="44" transform="rotate(-1 450 44)">Getting started</text>
 <text x="450" y="165" transform="rotate(0.7 450 165)">Your time (overview)</text>
-<text x="193" y="294" transform="rotate(-1.2 193 294)">Track time</text>
+<text x="193" y="293" transform="rotate(-1.2 193 294)">Track time</text>
 <text x="702" y="294" transform="rotate(0.6 702 294)">Settings and preferences</text>
 </g>
 </svg>
@@ -122,11 +122,7 @@ Your browser does not support video playback.
 
 ## {#closing-slide .center data-menu-title="Thank you"}
 
-<h2 class="closing-title">Thank you for your time.</h2>
-
-::: {.closing-note}
-Made with sweat, love and my brain. And some AI.
-:::
+<h2 class="closing-title">Links</h2>
 
 ::: {.credits}
 
