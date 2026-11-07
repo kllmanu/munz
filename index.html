@@ -615,6 +615,10 @@ text-align: center;
 #colors-slide .color-orb {
 transition: translate 0.8s ease, scale 0.8s ease, background-color 0.8s ease;
 }
+
+#colors-slide[data-auto-animate="running"] .color-orb[data-auto-animate-target] {
+transition-property: opacity, padding, transform, translate, scale, background-color !important;
+}
 .reveal .here-step {
 position: absolute;
 top: calc(50% + 1.5rem);
@@ -645,7 +649,7 @@ pointer-events: none;
 }
 @media (prefers-reduced-motion: reduce) {
 #colors-slide .color-orb {
-transition: none;
+transition: none !important;
 }
 }
 .reveal .orb-video {

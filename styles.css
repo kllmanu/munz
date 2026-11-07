@@ -146,6 +146,11 @@
   transition: translate 0.8s ease, scale 0.8s ease, background-color 0.8s ease;
 }
 
+/* Auto-Animate owns the transition list after entry; retain fragment motion too. */
+#colors-slide[data-auto-animate="running"] .color-orb[data-auto-animate-target] {
+  transition-property: opacity, padding, transform, translate, scale, background-color !important;
+}
+
 .reveal .here-step {
   position: absolute;
   top: calc(50% + 1.5rem);
@@ -181,7 +186,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   #colors-slide .color-orb {
-    transition: none;
+    transition: none !important;
   }
 }
 
