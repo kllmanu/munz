@@ -10,6 +10,8 @@ format:
     include-after-body: logo-animation.html
 ---
 
+## this slide is intentionally left blank {#blank-slide .center}
+
 ## {#title-slide .center auto-animate="true" auto-animate-id="brand" data-menu-title="Introducing Münz"}
 
 ```{=html}

@@ -5,6 +5,14 @@
   font-family: "IBM Plex Sans", sans-serif;
 }
 
+#blank-slide h2 {
+  margin: 0;
+  text-align: center;
+  color: rgba(23, 43, 64, 0.25);
+  font-size: 0.5em;
+  font-weight: 400;
+}
+
 #title-slide .logo-stage {
   position: relative;
   width: clamp(12rem, 26vw, 18rem);
