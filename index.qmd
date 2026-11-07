@@ -1,11 +1,11 @@
 ---
-pagetitle: "Introducing Münz"
+pagetitle: "Introducing: Münz"
 format:
   revealjs:
     embed-resources: true
     center: true
     transition: none
-    footer: "Use the arrow keys to navigate this presentation."
+    footer: "Use the arrow keys to **navigate** this presentation."
     css: styles.css
     include-in-header: google-fonts.html
     include-after-body: logo-animation.html
@@ -13,7 +13,7 @@ format:
 
 ## this slide is intentionally left blank {#blank-slide .center}
 
-## {#title-slide .center auto-animate="true" auto-animate-id="brand" data-menu-title="Introducing Münz" data-footer="false"}
+## {#title-slide .center auto-animate="true" auto-animate-id="brand" data-menu-title="Introducing: Münz" data-footer="false"}
 
 ```{=html}
 <div class="logo-stage">
@@ -21,7 +21,7 @@ format:
 {{< include assets/logo3.svg >}}
 </div>
 </div>
-<h1 class="title">Introducing Münz</h1>
+<h1 class="title">Introducing: Münz</h1>
 ```
 
 <!--
