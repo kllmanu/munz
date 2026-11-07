@@ -598,6 +598,19 @@ font-size: 1em;
 font-weight: 600;
 text-align: center;
 }
+.reveal .time-message {
+position: absolute;
+top: calc(50% + var(--orb-size) / 2 + 2rem);
+left: 50%;
+width: 800px;
+max-width: 90vw;
+margin: 0;
+transform: translateX(-50%);
+color: #172b40;
+font-size: 0.6em;
+line-height: 1.5;
+text-align: center;
+}
 .reveal .orb-video {
 position: absolute;
 z-index: 3;
@@ -1449,6 +1462,9 @@ Your browser does not support video playback.
 </video>
 </div>
 <p class="video-error" role="alert" hidden>
+</p>
+<p class="time-message fragment" data-fragment-index="3">
+Living paycheck to paycheck is a problem of the past. Münz is a budgeting app that wants you to think in time and earn yourself a future.
 </p>
 </div>
 

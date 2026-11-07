@@ -127,6 +127,20 @@
   text-align: center;
 }
 
+.reveal .time-message {
+  position: absolute;
+  top: calc(50% + var(--orb-size) / 2 + 2rem);
+  left: 50%;
+  width: 800px;
+  max-width: 90vw;
+  margin: 0;
+  transform: translateX(-50%);
+  color: #172b40;
+  font-size: 0.6em;
+  line-height: 1.5;
+  text-align: center;
+}
+
 .reveal .orb-video {
   position: absolute;
   z-index: 3;
