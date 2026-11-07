@@ -30,6 +30,36 @@
   font-size: 24px;
 }
 
+.reveal .navigation-scribble {
+  position: absolute;
+  top: calc(50% - var(--orb-size) / 2 + 1rem);
+  left: 50%;
+  width: 90%;
+  max-width: 900px;
+  height: auto;
+  margin: 0;
+  transform: translateX(-50%);
+  overflow: visible;
+  color: #172b40;
+}
+
+.navigation-scribble path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.navigation-scribble .scribble-labels {
+  fill: currentColor;
+  font-family: "IBM Plex Sans", sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
 #closing-slide > h2:empty {
   display: none;
 }

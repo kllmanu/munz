@@ -81,6 +81,37 @@ Your browser does not support video playback.
 
 ## Navigation {.app-section}
 
+```{=html}
+<svg class="navigation-scribble" viewBox="0 0 900 340" role="img" aria-labelledby="navigation-title navigation-description">
+<title id="navigation-title">Münz navigation</title>
+<desc id="navigation-description">Getting started leads to Your time (overview). From the overview, you can open Track time or Settings and preferences, and return from either screen.</desc>
+<defs>
+<marker id="navigation-arrow" viewBox="0 0 14 14" refX="11" refY="7" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+<path d="M 2 2 Q 6 5 11 7 Q 6 9 2 12" />
+</marker>
+</defs>
+<g class="scribble-boxes">
+<path d="M 343 12 Q 395 8 451 12 T 557 11 Q 565 13 563 26 L 565 65 Q 561 75 550 72 Q 451 76 347 72 Q 336 74 338 61 L 336 25 Q 335 13 343 12 Z" />
+<path d="M 321 129 Q 370 124 430 128 T 578 127 Q 587 127 585 141 L 587 186 Q 584 199 572 196 Q 449 201 324 196 Q 314 196 316 181 L 313 144 Q 312 130 321 129 Z" />
+<path d="M 94 260 Q 145 256 192 260 T 287 259 Q 299 258 297 273 L 299 316 Q 295 328 283 325 Q 191 330 99 326 Q 88 328 89 313 L 87 275 Q 86 263 94 260 Z" />
+<path d="M 572 260 Q 639 256 704 260 T 827 259 Q 839 260 837 274 L 839 315 Q 836 328 823 325 Q 704 330 577 326 Q 565 328 567 312 L 564 275 Q 563 262 572 260 Z" />
+</g>
+<g class="scribble-arrows" marker-end="url(#navigation-arrow)">
+<path d="M 449 81 Q 446 100 450 119" />
+<path d="M 307 157 Q 188 153 182 249" />
+<path d="M 218 249 Q 224 192 304 186" />
+<path d="M 595 158 Q 720 153 721 249" />
+<path d="M 685 249 Q 681 194 596 186" />
+</g>
+<g class="scribble-labels">
+<text x="450" y="44" transform="rotate(-1 450 44)">Getting started</text>
+<text x="450" y="165" transform="rotate(0.7 450 165)">Your time (overview)</text>
+<text x="193" y="294" transform="rotate(-1.2 193 294)">Track time</text>
+<text x="702" y="294" transform="rotate(0.6 702 294)">Settings and preferences</text>
+</g>
+</svg>
+```
+
 ## Components {.app-section}
 
 - Logo
