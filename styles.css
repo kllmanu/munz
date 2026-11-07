@@ -177,6 +177,32 @@
   translate: calc((var(--orb-overlap) - var(--orb-size)) / 2) 0;
 }
 
+#colors-slide:has(.here-step.visible) .color-intersection::after {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--orb-size) * 0.06);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #d62828;
+  opacity: 0;
+  pointer-events: none;
+  animation: here-pulse 2s ease-out 1s infinite;
+}
+
+@keyframes here-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.35;
+  }
+  80%, 100% {
+    transform: translate(-50%, -50%) scale(2.8);
+    opacity: 0;
+  }
+}
+
 #colors-slide:has(.here-step.visible) :is(.orb-note, .time-headline, .time-message, .orb-video, .video-error),
 #colors-slide:has(.here-step.visible) .color-orb > * {
   opacity: 0 !important;
@@ -187,6 +213,10 @@
 @media (prefers-reduced-motion: reduce) {
   #colors-slide .color-orb {
     transition: none !important;
+  }
+
+  #colors-slide:has(.here-step.visible) .color-intersection::after {
+    animation: none;
   }
 }
 
