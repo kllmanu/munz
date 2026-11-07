@@ -502,43 +502,18 @@ color: rgba(23, 43, 64, 0.25);
 font-size: 0.5em;
 font-weight: 400;
 }
-#features-slide > h2 {
-margin: 0 0 3rem;
+.reveal .app-section {
+height: 100%;
 }
 #features-slide > ul {
-display: grid;
-grid-template-columns: repeat(2, minmax(0, 1fr));
-gap: 2.5rem 3.5rem;
-width: 90%;
-margin: 0 auto;
-padding: 0;
-list-style: none;
-color: #172b40;
-font-size: 0.7em;
-line-height: 1.35;
-text-align: left;
-}
-#features-slide > ul > li {
-display: flex;
-align-items: center;
-min-height: 3em;
+position: absolute;
+top: calc(50% - var(--orb-size) / 2 + 1rem);
+left: 50%;
+width: max-content;
+max-width: 85%;
 margin: 0;
-padding: 0 0 0 1.25rem;
-border-left: 3px solid #d8b773;
-font-weight: 500;
-}
-@media (max-width: 600px) {
-#features-slide > h2 {
-margin-bottom: 1.5rem;
-}
-#features-slide > ul {
-grid-template-columns: 1fr;
-gap: 0.75rem;
-font-size: 0.6em;
-}
-#features-slide > ul > li {
-min-height: 2em;
-}
+transform: translateX(-50%);
+font-size: 24px;
 }
 #closing-slide > h2:empty {
 display: none;
@@ -672,7 +647,8 @@ text-align: center;
 }
 .reveal .time-headline,
 .reveal .here-headline,
-.reveal .definition-headline {
+.reveal .definition-headline,
+.reveal .app-section > h2 {
 position: absolute;
 bottom: calc(50% + var(--orb-size) / 2 + 2rem);
 left: 50%;
