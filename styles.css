@@ -116,6 +116,16 @@
 
 .reveal .time-headline,
 .reveal .here-headline,
+.reveal .definition-headline,
+.reveal .app-section > h2 {
+  color: #172b40;
+  font-size: 1em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.reveal .time-headline,
+.reveal .here-headline,
 .reveal .definition-headline {
   position: absolute;
   bottom: calc(50% + var(--orb-size) / 2 + 2rem);
@@ -124,10 +134,6 @@
   max-width: 90vw;
   margin: 0;
   transform: translateX(-50%);
-  color: #172b40;
-  font-size: 1em;
-  font-weight: 600;
-  text-align: center;
 }
 
 .reveal .time-message {
