@@ -114,7 +114,9 @@
   text-align: center;
 }
 
-.reveal .time-headline {
+.reveal .time-headline,
+.reveal .here-headline,
+.reveal .definition-headline {
   position: absolute;
   bottom: calc(50% + var(--orb-size) / 2 + 2rem);
   left: 50%;
@@ -198,7 +200,8 @@
 }
 
 #colors-slide:has(.definition-step.visible) .color-orb,
-#colors-slide:has(.definition-step.visible) .here-step {
+#colors-slide:has(.definition-step.visible) .here-step,
+#colors-slide:has(.definition-step.visible) .here-headline {
   opacity: 0 !important;
   visibility: hidden !important;
 }

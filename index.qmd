@@ -53,16 +53,18 @@ Time is money, but money can’t buy time
 </svg>
 </div>
 <div class="orb-video fragment" data-fragment-index="2">
-<video src="assets/track-of-time.mp4" data-autoplay muted playsinline preload="metadata" aria-label="Track of time">
+<video src="assets/track-of-time.mp4" data-autoplay muted loop playsinline preload="metadata" aria-label="Track of time">
 Your browser does not support video playback.
 </video>
 </div>
 <p class="video-error" role="alert" hidden></p>
-<p class="time-message fragment" data-fragment-index="3">Chasing budgets and savings won’t save you from getting lost.
+<p class="time-message fragment" data-fragment-index="3">Chasing budgets and savings won’t save you <strong>from getting lost</strong>.
 </p>
 <p class="here-step fragment" data-fragment-index="4">You are here</p>
+<h2 class="here-headline fragment" data-fragment-index="4">But Münz does</h2>
 <div class="definition-step fragment" data-fragment-index="5">
+<h2 class="definition-headline">App definition statement</h2>
 <div class="definition-logo title-logo"></div>
-<p class="app-definition">Münz is a time tracking app for impulsive spenders<br>that won't save you time, but budget. And sanity.</p>
+<p class="app-definition">Münz is a <strong>time tracking app</strong> for impulsive spenders<br>It won't save you time, but budget. And sanity.</p>
 </div>
 </div>
