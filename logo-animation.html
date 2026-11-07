@@ -37,6 +37,15 @@
     updateMotion();
     reducedMotion.addEventListener("change", updateMotion);
 
+    const video = document.querySelector(".orb-video video");
+    video.addEventListener("error", () => {
+      const message = "Unable to load the Track of time video.";
+      console.error(message, video.error);
+      const status = document.querySelector(".video-error");
+      status.textContent = message;
+      status.hidden = false;
+    });
+
     function enter() {
       animations.forEach(animation => animation.cancel());
       animations = poses.map(([selector, from, to, property = "transform"]) =>

@@ -31,6 +31,7 @@ Time is money, but money can’t buy time
 ## {#colors-slide auto-animate="true" auto-animate-id="brand" data-menu-title="Time and value" data-footer="false"}
 
 <div class="color-intersection">
+<h2 class="time-headline fragment" data-fragment-index="2">We've lost track of time</h2>
 <div class="color-orb time-orb" data-id="time-orb">
 <h3>Time</h3>
 <p class="color-hex">#172B40</p>
@@ -51,4 +52,10 @@ Time is money, but money can’t buy time
 <path d="M 151 9 C 166 35, 143 61, 112 70 S 42 76, 4 95 M 23 77 L 4 95 L 28 96" />
 </svg>
 </div>
+<div class="orb-video fragment" data-fragment-index="2">
+<video src="assets/track-of-time.mp4" data-autoplay muted playsinline preload="metadata" aria-label="Track of time">
+Your browser does not support video playback.
+</video>
+</div>
+<p class="video-error" role="alert" hidden></p>
 </div>
