@@ -1,0 +1,65 @@
+<script>
+(() => {
+  const duration = 2000;
+  const poses = [
+    ["#watch-slider", "translateX(76px)", "translateX(0px)"],
+    ["#watch-rotator", "rotate(41.9deg)", "rotate(0deg)"],
+    ["#hour-hand", "rotate(180deg)", "rotate(305deg)"],
+    ["#minute-hand", "rotate(0deg)", "rotate(420deg)"],
+    ["#coin-slider", "translateX(-76px)", "translateX(0px)"],
+    ["#coin-rotator", "rotate(-41.9deg)", "rotate(0deg)"],
+    ['[data-id="time-orb"]', "29.6875%", "14.84375%", "left"],
+    ['[data-id="value-orb"]', "29.6875%", "44.53125%", "left"]
+  ];
+
+  function setup() {
+    const title = document.getElementById("title-slide");
+    const stage = title.querySelector(".logo-stage");
+    const logo = stage.querySelector("svg");
+    logo.setAttribute("role", "img");
+    logo.setAttribute("aria-label", "Münz logo");
+    // Keep the shared SVG unchanged; control its motion only in this slide.
+    logo.querySelectorAll("style").forEach(style => style.remove());
+    document.querySelectorAll("#colors-slide .color-orb").forEach(orb => {
+      const copy = orb.cloneNode(false);
+      copy.setAttribute("aria-hidden", "true");
+      stage.insertBefore(copy, stage.firstChild);
+    });
+
+    let animations = [];
+    const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+    function updateMotion() {
+      document.querySelectorAll('[data-auto-animate-id="brand"]').forEach(slide => {
+        if (reducedMotion.matches) slide.dataset.autoAnimateDuration = "0";
+        else delete slide.dataset.autoAnimateDuration;
+      });
+    }
+    updateMotion();
+    reducedMotion.addEventListener("change", updateMotion);
+
+    function enter() {
+      animations.forEach(animation => animation.cancel());
+      animations = poses.map(([selector, from, to, property = "transform"]) =>
+        stage.querySelector(selector).animate(
+        [{ [property]: from }, { [property]: to }],
+        {
+          duration: reducedMotion.matches ? 0 : duration,
+          easing: "cubic-bezier(0.2, 0.8, 0.3, 1)",
+          fill: "forwards"
+        }
+      ));
+    }
+
+    Reveal.on("slidechanged", event => {
+      if (event.currentSlide === title) enter();
+    });
+
+    if (Reveal.getCurrentSlide() === title) enter();
+  }
+
+  window.addEventListener("load", () => {
+    if (Reveal.isReady()) setup();
+    else Reveal.on("ready", setup);
+  });
+})();
+</script>

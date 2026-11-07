@@ -493,13 +493,59 @@ margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
 --r-heading-font: "IBM Plex Sans", sans-serif;
 font-family: "IBM Plex Sans", sans-serif;
 }
-#title-slide::before {
-content: "";
-display: block;
+#title-slide .logo-stage {
+position: relative;
 width: clamp(12rem, 26vw, 18rem);
 aspect-ratio: 1;
 margin: 0 auto 1.5rem;
-background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIj4KICA8ZGVmcz4KICAgIDwhLS0gNS16YWNraWdlciBFVS1TdGVybiAtLT4KICAgIDxnIGlkPSJldXJvLXN0YXIiPgogICAgICA8cG9seWdvbgogICAgICAgIHBvaW50cz0iMCwtNC41IDEuMywtMS40IDQuNSwtMS40IDEuOSwwLjYgMi45LDMuOCAwLDEuOCAtMi45LDMuOCAtMS45LDAuNiAtNC41LC0xLjQgLTEuMywtMS40IgogICAgICAgIGZpbGw9IiMxNzJCNDAiCiAgICAgIC8+CiAgICA8L2c+CgogICAgPCEtLSA0IFNla3VuZGVuc3RyaWNoZSB6d2lzY2hlbiB6d2VpIHZvbGxlbiBTdHVuZGVuIChpbSBFdXJvLUdyYXUpIC0tPgogICAgPGcgaWQ9InNlYy10aWNrLWdyb3VwIj4KICAgICAgPGxpbmUgeDE9IjE4MCIgeTE9IjE2OCIgeDI9IjE4MCIgeTI9IjE3MyIgdHJhbnNmb3JtPSJyb3RhdGUoNiAxODAgMjU2KSIgLz4KICAgICAgPGxpbmUgeDE9IjE4MCIgeTE9IjE2OCIgeDI9IjE4MCIgeTI9IjE3MyIgdHJhbnNmb3JtPSJyb3RhdGUoMTIgMTgwIDI1NikiIC8+CiAgICAgIDxsaW5lIHgxPSIxODAiIHkxPSIxNjgiIHgyPSIxODAiIHkyPSIxNzMiIHRyYW5zZm9ybT0icm90YXRlKDE4IDE4MCAyNTYpIiAvPgogICAgICA8bGluZSB4MT0iMTgwIiB5MT0iMTY4IiB4Mj0iMTgwIiB5Mj0iMTczIiB0cmFuc2Zvcm09InJvdGF0ZSgyNCAxODAgMjU2KSIgLz4KICAgIDwvZz4KCiAgICA8c3R5bGU+CiAgICAgIC5zdHJva2UtbWFpbiB7CiAgICAgICAgc3Ryb2tlOiAjMTcyQjQwOwogICAgICAgIHN0cm9rZS1saW5lY2FwOiByb3VuZDsKICAgICAgICBzdHJva2UtbGluZWpvaW46IHJvdW5kOwogICAgICB9CgogICAgICAvKiA9PT09PT09PT09PT09PT09PSBBTklNQVRJT05FTiAoWkVOVFJJRVJURVIgU1RBUlQgQkVJIFg9MjU2KSA9PT09PT09PT09PT09PT09PSAqLwogICAgICAvKiAKICAgICAgICAgQmVpZGUgRWxlbWVudGUgc3RhcnRlbiBiZWkgWD0yNTYgKE1pdHRlKSB1bmQgYmV3ZWdlbiBzaWNoIGplIDc2cHggbmFjaCBhdcOfZW4uCiAgICAgICAgIFJvbGx3aW5rZWwgb2huZSBSdXRzY2hlbjogcyAvIHIgPSA3NnB4IC8gMTA0cHgg4omIIDQxLjg3wrAKICAgICAgKi8KCiAgICAgIC8qIDEuIFVIUjogVHJhbnNsYXRpb24gdm9uIGRlciBNaXR0ZSAoWD0yNTYsIGFsc28gKzc2cHgpIG5hY2ggbGlua3MgKFg9MTgwLCBhbHNvIDBweCkgKi8KICAgICAgI3dhdGNoLXNsaWRlciB7CiAgICAgICAgYW5pbWF0aW9uOiB3YXRjaFNsaWRlIDMuNXMgY3ViaWMtYmV6aWVyKDAuMiwgMC44LCAwLjMsIDEpIGluZmluaXRlOwogICAgICB9CgogICAgICBAa2V5ZnJhbWVzIHdhdGNoU2xpZGUgewogICAgICAgIDAlIHsgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKDc2cHgpOyB9CiAgICAgICAgNTMlLCA4NCUgeyB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoMHB4KTsgfQogICAgICAgIDEwMCUgeyB0cmFuc2Zvcm06IHRyYW5zbGF0ZVgoNzZweCk7IH0KICAgICAgfQoKICAgICAgLyogMi4gVUhSOiBSb2xsYmV3ZWd1bmcgbmFjaCBsaW5rcyB1bSA0MS45wrAgaW5zIExvdCAoMMKwKSAqLwogICAgICAjd2F0Y2gtcm90YXRvciB7CiAgICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMTgwcHggMjU2cHg7CiAgICAgICAgYW5pbWF0aW9uOiB3YXRjaFR1cm4gMy41cyBjdWJpYy1iZXppZXIoMC4yLCAwLjgsIDAuMywgMSkgaW5maW5pdGU7CiAgICAgIH0KCiAgICAgIEBrZXlmcmFtZXMgd2F0Y2hUdXJuIHsKICAgICAgICAwJSB7IHRyYW5zZm9ybTogcm90YXRlKDQxLjlkZWcpOyB9CiAgICAgICAgNTMlLCA4NCUgeyB0cmFuc2Zvcm06IHJvdGF0ZSgwZGVnKTsgfQogICAgICAgIDEwMCUgeyB0cmFuc2Zvcm06IHJvdGF0ZSg0MS45ZGVnKTsgfQogICAgICB9CgogICAgICAvKiAzLiBaRUlHRVI6IFN0dW5kZW56ZWlnZXIgKDYgVWhyIC0+IDEwIFVocikgKi8KICAgICAgI2hvdXItaGFuZCB7CiAgICAgICAgdHJhbnNmb3JtLW9yaWdpbjogMTgwcHggMjU2cHg7CiAgICAgICAgYW5pbWF0aW9uOiBob3VyQW5pbSAzLjVzIGN1YmljLWJlemllcigwLjIsIDAuOCwgMC4zLCAxKSBpbmZpbml0ZTsKICAgICAgfQoKICAgICAgQGtleWZyYW1lcyBob3VyQW5pbSB7CiAgICAgICAgMCUgeyB0cmFuc2Zvcm06IHJvdGF0ZSgxODBkZWcpOyB9CiAgICAgICAgNTMlLCA4NCUgeyB0cmFuc2Zvcm06IHJvdGF0ZSgzMDVkZWcpOyB9CiAgICAgICAgMTAwJSB7IHRyYW5zZm9ybTogcm90YXRlKDE4MGRlZyk7IH0KICAgICAgfQoKICAgICAgLyogNC4gWkVJR0VSOiBNaW51dGVuemVpZ2VyICgxMiBVaHIgLT4gMiBVaHIgLyAxMCBuYWNoKSAqLwogICAgICAjbWludXRlLWhhbmQgewogICAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDE4MHB4IDI1NnB4OwogICAgICAgIGFuaW1hdGlvbjogbWludXRlQW5pbSAzLjVzIGN1YmljLWJlemllcigwLjIsIDAuOCwgMC4zLCAxKSBpbmZpbml0ZTsKICAgICAgfQoKICAgICAgQGtleWZyYW1lcyBtaW51dGVBbmltIHsKICAgICAgICAwJSB7IHRyYW5zZm9ybTogcm90YXRlKDBkZWcpOyB9CiAgICAgICAgNTMlLCA4NCUgeyB0cmFuc2Zvcm06IHJvdGF0ZSg0MjBkZWcpOyB9CiAgICAgICAgMTAwJSB7IHRyYW5zZm9ybTogcm90YXRlKDBkZWcpOyB9CiAgICAgIH0KCiAgICAgIC8qIDUuIE3DnE5aRTogVHJhbnNsYXRpb24gdm9uIGRlciBNaXR0ZSAoWD0yNTYsIGFsc28gLTc2cHgpIG5hY2ggcmVjaHRzIChYPTMzMiwgYWxzbyAwcHgpICovCiAgICAgICNjb2luLXNsaWRlciB7CiAgICAgICAgYW5pbWF0aW9uOiBjb2luU2xpZGUgMy41cyBjdWJpYy1iZXppZXIoMC4yLCAwLjgsIDAuMywgMSkgaW5maW5pdGU7CiAgICAgIH0KCiAgICAgIEBrZXlmcmFtZXMgY29pblNsaWRlIHsKICAgICAgICAwJSB7IHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNzZweCk7IH0KICAgICAgICA1MyUsIDg0JSB7IHRyYW5zZm9ybTogdHJhbnNsYXRlWCgwcHgpOyB9CiAgICAgICAgMTAwJSB7IHRyYW5zZm9ybTogdHJhbnNsYXRlWCgtNzZweCk7IH0KICAgICAgfQoKICAgICAgLyogNi4gTcOcTlpFOiBSb2xsYmV3ZWd1bmcgbmFjaCByZWNodHMgdW0gNDEuOcKwIGlucyBMb3QgKDDCsCksIHNvZGFzcyBkZXIgMWVyIGdlcmFkZSBzdGVodCAqLwogICAgICAjY29pbi1yb3RhdG9yIHsKICAgICAgICB0cmFuc2Zvcm0tb3JpZ2luOiAzMzJweCAyNTZweDsKICAgICAgICBhbmltYXRpb246IGNvaW5Sb2xsIDMuNXMgY3ViaWMtYmV6aWVyKDAuMiwgMC44LCAwLjMsIDEpIGluZmluaXRlOwogICAgICB9CgogICAgICBAa2V5ZnJhbWVzIGNvaW5Sb2xsIHsKICAgICAgICAwJSB7IHRyYW5zZm9ybTogcm90YXRlKC00MS45ZGVnKTsgfQogICAgICAgIDUzJSwgODQlIHsgdHJhbnNmb3JtOiByb3RhdGUoMGRlZyk7IH0KICAgICAgICAxMDAlIHsgdHJhbnNmb3JtOiByb3RhdGUoLTQxLjlkZWcpOyB9CiAgICAgIH0KICAgIDwvc3R5bGU+CiAgPC9kZWZzPgoKICA8IS0tID09PT09PT09PT09PT09PT09IDEtRVVSTy1Nw5xOWkUgKEhJTlRFUiBERVIgVUhSLCBST0xMVCBOQUNIIFJFQ0hUUykgPT09PT09PT09PT09PT09PT0gLS0+CiAgPGcgaWQ9ImNvaW4tc2xpZGVyIj4KICAgIDxnIGlkPSJjb2luLXJvdGF0b3IiPgogICAgICA8IS0tIMOEdcOfZXJlciBHb2xkcmluZyAtLT4KICAgICAgPGNpcmNsZQogICAgICAgIGN4PSIzMzIiCiAgICAgICAgY3k9IjI1NiIKICAgICAgICByPSIxMDQiCiAgICAgICAgZmlsbD0iI0Q4Qjc3MyIKICAgICAgICBzdHJva2U9IiMxNzJCNDAiCiAgICAgICAgc3Ryb2tlLXdpZHRoPSI2IgogICAgICAvPgoKICAgICAgPCEtLSBJbm5lcmVyIFNpbGJlcmtlcm4gLS0+CiAgICAgIDxjaXJjbGUKICAgICAgICBjeD0iMzMyIgogICAgICAgIGN5PSIyNTYiCiAgICAgICAgcj0iNzIiCiAgICAgICAgZmlsbD0iI0ZGRkZGRiIKICAgICAgICBzdHJva2U9IiMxNzJCNDAiCiAgICAgICAgc3Ryb2tlLXdpZHRoPSIzIgogICAgICAvPgoKICAgICAgPCEtLSBTdWJ0aWxlIEV1cm8tR3JhdS1MaW5pZW4gYXVmIGRlbSBLZXJuIC0tPgogICAgICA8ZyBvcGFjaXR5PSIwLjI1Ij4KICAgICAgICA8bGluZSB4MT0iMzQ2IiB5MT0iMjIyIiB4Mj0iMzQ2IiB5Mj0iMjkwIiBzdHJva2U9IiMxNzJCNDAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIC8+CiAgICAgICAgPGxpbmUgeDE9IjM1NiIgeTE9IjIxNiIgeDI9IjM1NiIgeTI9IjI5NiIgc3Ryb2tlPSIjMTcyQjQwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiAvPgogICAgICAgIDxsaW5lIHgxPSIzNjYiIHkxPSIyMTQiIHgyPSIzNjYiIHkyPSIyOTgiIHN0cm9rZT0iIzE3MkI0MCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgLz4KICAgICAgICA8bGluZSB4MT0iMzc2IiB5MT0iMjE4IiB4Mj0iMzc2IiB5Mj0iMjk0IiBzdHJva2U9IiMxNzJCNDAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIC8+CiAgICAgICAgPGxpbmUgeDE9IjM4NiIgeTE9IjIyNiIgeDI9IjM4NiIgeTI9IjI4NiIgc3Ryb2tlPSIjMTcyQjQwIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiAvPgogICAgICA8L2c+CgogICAgICA8IS0tIERpZSAiMSIgKHN0ZWh0IGFtIEVuZGUgZXhha3Qgc2Vua3JlY2h0KSAtLT4KICAgICAgPHBhdGgKICAgICAgICBkPSJNIDMwNyAyNDggCiAgICAgICAgICAgTCAzMjMgMjMyIAogICAgICAgICAgIEwgMzMzIDIzMiAKICAgICAgICAgICBMIDMzMyAyODAgCiAgICAgICAgICAgTCAzMjIgMjgwIAogICAgICAgICAgIEwgMzIyIDI0NyAKICAgICAgICAgICBMIDMxMiAyNTUgWiIKICAgICAgICBmaWxsPSIjMTcyQjQwIgogICAgICAvPgoKICAgICAgPCEtLSAiRVVSTyItU2NocmlmdHp1ZyAtLT4KICAgICAgPHRleHQKICAgICAgICB4PSIzNDAiCiAgICAgICAgeT0iMjYyIgogICAgICAgIGZvbnQtZmFtaWx5PSJzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIEJsaW5rTWFjU3lzdGVtRm9udCwgJ1NlZ29lIFVJJywgUm9ib3RvLCAnSGVsdmV0aWNhIE5ldWUnLCBBcmlhbCwgc2Fucy1zZXJpZiIKICAgICAgICBmb250LXNpemU9IjE0LjUiCiAgICAgICAgZm9udC13ZWlnaHQ9IjkwMCIKICAgICAgICBsZXR0ZXItc3BhY2luZz0iMS41IgogICAgICAgIGZpbGw9IiMxNzJCNDAiCiAgICAgID5FVVJPPC90ZXh0PgoKICAgICAgPCEtLSAxMiBTdGVybmUgYXVmIGRlbSBHb2xkcmluZyAtLT4KICAgICAgPHVzZSBocmVmPSIjZXVyby1zdGFyIiB4PSIzMzIiIHk9IjE2OCIgLz4KICAgICAgPHVzZSBocmVmPSIjZXVyby1zdGFyIiB4PSIzNzYiIHk9IjE4MCIgLz4KICAgICAgPHVzZSBocmVmPSIjZXVyby1zdGFyIiB4PSI0MDgiIHk9IjIxMiIgLz4KICAgICAgPHVzZSBocmVmPSIjZXVyby1zdGFyIiB4PSI0MjAiIHk9IjI1NiIgLz4KICAgICAgPHVzZSBocmVmPSIjZXVyby1zdGFyIiB4PSI0MDgiIHk9IjMwMCIgLz4KICAgICAgPHVzZSBocmVmPSIjZXVyby1zdGFyIiB4PSIzNzYiIHk9IjMzMiIgLz4KICAgICAgPHVzZSBocmVmPSIjZXVyby1zdGFyIiB4PSIzMzIiIHk9IjM0NCIgLz4KICAgICAgPHVzZSBocmVmPSIjZXVyby1zdGFyIiB4PSIyODgiIHk9IjMzMiIgLz4KICAgICAgPHVzZSBocmVmPSIjZXVyby1zdGFyIiB4PSIyNTYiIHk9IjMwMCIgLz4KICAgICAgPHVzZSBocmVmPSIjZXVyby1zdGFyIiB4PSIyNDQiIHk9IjI1NiIgLz4KICAgICAgPHVzZSBocmVmPSIjZXVyby1zdGFyIiB4PSIyNTYiIHk9IjIxMiIgLz4KICAgICAgPHVzZSBocmVmPSIjZXVyby1zdGFyIiB4PSIyODgiIHk9IjE4MCIgLz4KICAgIDwvZz4KICA8L2c+CgogIDwhLS0gPT09PT09PT09PT09PT09PT0gVUhSIChWT1JORSwgUk9MTFQgTkFDSCBMSU5LUykgPT09PT09PT09PT09PT09PT0gLS0+CiAgPGcgaWQ9IndhdGNoLXNsaWRlciI+CiAgICA8ZyBpZD0id2F0Y2gtcm90YXRvciI+CiAgICAgIDwhLS0gWmlmZmVyYmxhdHQtSGludGVyZ3J1bmQgLS0+CiAgICAgIDxjaXJjbGUKICAgICAgICBjeD0iMTgwIgogICAgICAgIGN5PSIyNTYiCiAgICAgICAgcj0iMTA0IgogICAgICAgIGZpbGw9IiNGRkZGRkYiCiAgICAgICAgc3Ryb2tlPSIjMTcyQjQwIgogICAgICAgIHN0cm9rZS13aWR0aD0iNiIKICAgICAgLz4KCiAgICAgIDwhLS0gU2VrdW5kZW5zdHJpY2hlIChpbSBFdXJvLUdyYXUpIC0tPgogICAgICA8ZyBzdHJva2U9IiMxNzJCNDAiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuMjUiPgogICAgICAgIDx1c2UgaHJlZj0iI3NlYy10aWNrLWdyb3VwIiAvPgogICAgICAgIDx1c2UgaHJlZj0iI3NlYy10aWNrLWdyb3VwIiB0cmFuc2Zvcm09InJvdGF0ZSgzMCAxODAgMjU2KSIgLz4KICAgICAgICA8dXNlIGhyZWY9IiNzZWMtdGljay1ncm91cCIgdHJhbnNmb3JtPSJyb3RhdGUoNjAgMTgwIDI1NikiIC8+CiAgICAgICAgPHVzZSBocmVmPSIjc2VjLXRpY2stZ3JvdXAiIHRyYW5zZm9ybT0icm90YXRlKDkwIDE4MCAyNTYpIiAvPgogICAgICAgIDx1c2UgaHJlZj0iI3NlYy10aWNrLWdyb3VwIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjAgMTgwIDI1NikiIC8+CiAgICAgICAgPHVzZSBocmVmPSIjc2VjLXRpY2stZ3JvdXAiIHRyYW5zZm9ybT0icm90YXRlKDE1MCAxODAgMjU2KSIgLz4KICAgICAgICA8dXNlIGhyZWY9IiNzZWMtdGljay1ncm91cCIgdHJhbnNmb3JtPSJyb3RhdGUoMTgwIDE4MCAyNTYpIiAvPgogICAgICAgIDx1c2UgaHJlZj0iI3NlYy10aWNrLWdyb3VwIiB0cmFuc2Zvcm09InJvdGF0ZSgyMTAgMTgwIDI1NikiIC8+CiAgICAgICAgPHVzZSBocmVmPSIjc2VjLXRpY2stZ3JvdXAiIHRyYW5zZm9ybT0icm90YXRlKDI0MCAxODAgMjU2KSIgLz4KICAgICAgICA8dXNlIGhyZWY9IiNzZWMtdGljay1ncm91cCIgdHJhbnNmb3JtPSJyb3RhdGUoMjcwIDE4MCAyNTYpIiAvPgogICAgICAgIDx1c2UgaHJlZj0iI3NlYy10aWNrLWdyb3VwIiB0cmFuc2Zvcm09InJvdGF0ZSgzMDAgMTgwIDI1NikiIC8+CiAgICAgICAgPHVzZSBocmVmPSIjc2VjLXRpY2stZ3JvdXAiIHRyYW5zZm9ybT0icm90YXRlKDMzMCAxODAgMjU2KSIgLz4KICAgICAgPC9nPgoKICAgICAgPCEtLSBIYXVwdC1TdHVuZGVuc3RyaWNoZSAoMTIsIDMsIDYsIDkpIC0tPgogICAgICA8bGluZSB4MT0iMTgwIiB5MT0iMTY2IiB4Mj0iMTgwIiB5Mj0iMTgxIiBjbGFzcz0ic3Ryb2tlLW1haW4iIHN0cm9rZS13aWR0aD0iNCIgLz4KICAgICAgPGxpbmUgeDE9IjI1NSIgeTE9IjI1NiIgeDI9IjI3MCIgeTI9IjI1NiIgY2xhc3M9InN0cm9rZS1tYWluIiBzdHJva2Utd2lkdGg9IjQiIC8+CiAgICAgIDxsaW5lIHgxPSIxODAiIHkxPSIzMzEiIHgyPSIxODAiIHkyPSIzNDYiIGNsYXNzPSJzdHJva2UtbWFpbiIgc3Ryb2tlLXdpZHRoPSI0IiAvPgogICAgICA8bGluZSB4MT0iOTAiIHkxPSIyNTYiIHgyPSIxMDUiIHkyPSIyNTYiIGNsYXNzPSJzdHJva2UtbWFpbiIgc3Ryb2tlLXdpZHRoPSI0IiAvPgoKICAgICAgPCEtLSBOZWJlbi1TdHVuZGVuc3RyaWNoZSAtLT4KICAgICAgPGxpbmUgeDE9IjIyMCIgeTE9IjE4Ni43IiB4Mj0iMjI1IiB5Mj0iMTc4LjEiIGNsYXNzPSJzdHJva2UtbWFpbiIgc3Ryb2tlLXdpZHRoPSIyLjUiIC8+CiAgICAgIDxsaW5lIHgxPSIyNDkuMyIgeTE9IjIxNiIgeDI9IjI1Ny45IiB5Mj0iMjExIiBjbGFzcz0ic3Ryb2tlLW1haW4iIHN0cm9rZS13aWR0aD0iMi41IiAvPgogICAgICA8bGluZSB4MT0iMjQ5LjMiIHkxPSIyOTYiIHgyPSIyNTcuOSIgeTI9IjMwMSIgY2xhc3M9InN0cm9rZS1tYWluIiBzdHJva2Utd2lkdGg9IjIuNSIgLz4KICAgICAgPGxpbmUgeDE9IjIyMCIgeTE9IjMyNS4zIiB4Mj0iMjI1IiB5Mj0iMzMzLjkiIGNsYXNzPSJzdHJva2UtbWFpbiIgc3Ryb2tlLXdpZHRoPSIyLjUiIC8+CiAgICAgIDxsaW5lIHgxPSIxNDAiIHkxPSIzMjUuMyIgeDI9IjEzNSIgeTI9IjMzMy45IiBjbGFzcz0ic3Ryb2tlLW1haW4iIHN0cm9rZS13aWR0aD0iMi41IiAvPgogICAgICA8bGluZSB4MT0iMTEwLjciIHkxPSIyOTYiIHgyPSIxMDIuMSIgeTI9IjMwMSIgY2xhc3M9InN0cm9rZS1tYWluIiBzdHJva2Utd2lkdGg9IjIuNSIgLz4KICAgICAgPGxpbmUgeDE9IjExMC43IiB5MT0iMjE2IiB4Mj0iMTAyLjEiIHkyPSIyMTEiIGNsYXNzPSJzdHJva2UtbWFpbiIgc3Ryb2tlLXdpZHRoPSIyLjUiIC8+CiAgICAgIDxsaW5lIHgxPSIxNDAiIHkxPSIxODYuNyIgeDI9IjEzNSIgeTI9IjE3OC4xIiBjbGFzcz0ic3Ryb2tlLW1haW4iIHN0cm9rZS13aWR0aD0iMi41IiAvPgoKICAgICAgPCEtLSBTdHVuZGVuemVpZ2VyICh3YW5kZXJ0IHJlbGF0aXYgenVtIFppZmZlcmJsYXR0IHZvbiA2IGF1ZiAxMCBVaHIpIC0tPgogICAgICA8bGluZQogICAgICAgIGlkPSJob3VyLWhhbmQiCiAgICAgICAgeDE9IjE4MCIKICAgICAgICB5MT0iMjU2IgogICAgICAgIHgyPSIxODAiCiAgICAgICAgeTI9IjIxMSIKICAgICAgICBjbGFzcz0ic3Ryb2tlLW1haW4iCiAgICAgICAgc3Ryb2tlLXdpZHRoPSI2LjUiCiAgICAgIC8+CgogICAgICA8IS0tIE1pbnV0ZW56ZWlnZXIgKHdhbmRlcnQgcmVsYXRpdiB6dW0gWmlmZmVyYmxhdHQgdm9uIDEyIGF1ZiAyIFVocikgLS0+CiAgICAgIDxsaW5lCiAgICAgICAgaWQ9Im1pbnV0ZS1oYW5kIgogICAgICAgIHgxPSIxODAiCiAgICAgICAgeTE9IjI1NiIKICAgICAgICB4Mj0iMTgwIgogICAgICAgIHkyPSIxOTgiCiAgICAgICAgY2xhc3M9InN0cm9rZS1tYWluIgogICAgICAgIHN0cm9rZS13aWR0aD0iNi41IgogICAgICAvPgoKICAgICAgPCEtLSBNaXR0ZWxwdW5rdC1BYmRlY2t1bmcgLS0+CiAgICAgIDxjaXJjbGUKICAgICAgICBjeD0iMTgwIgogICAgICAgIGN5PSIyNTYiCiAgICAgICAgcj0iNCIKICAgICAgICBmaWxsPSIjMTcyQjQwIgogICAgICAvPgogICAgPC9nPgogIDwvZz4KPC9zdmc+) center / contain no-repeat;
+}
+#title-slide .title-logo {
+position: relative;
+z-index: 3;
+width: 100%;
+height: 100%;
+}
+.title-logo svg {
+display: block;
+}
+#title-slide > h2:empty,
+#colors-slide > h2:empty {
+display: none;
+}
+.title-logo .stroke-main {
+stroke: #172b40;
+stroke-linecap: round;
+stroke-linejoin: round;
+}
+.title-logo #watch-slider {
+transform: translateX(76px);
+}
+.title-logo #coin-slider {
+transform: translateX(-76px);
+}
+.title-logo #watch-rotator,
+.title-logo #hour-hand,
+.title-logo #minute-hand {
+transform-origin: 180px 256px;
+}
+.title-logo #watch-rotator {
+transform: rotate(41.9deg);
+}
+.title-logo #hour-hand {
+transform: rotate(180deg);
+}
+.title-logo #coin-rotator {
+transform-origin: 332px 256px;
+transform: rotate(-41.9deg);
+}
+.reveal .logo-stage .color-orb {
+position: absolute;
+top: 29.6875%;
+left: 29.6875%;
+width: 40.625%;
+height: 40.625%;
+margin: 0;
+padding: 0;
 }
 #title-slide h1.title {
 color: #172b40;
@@ -1072,20 +1118,202 @@ margin-right: 0; }
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introducing Münz</h1>
 
-<div class="quarto-title-authors">
+<section id="title-slide" class="slide level2 center" data-auto-animate="true" data-auto-animate-id="brand" data-menu-title="Introducing Münz">
+<h2 data-id="quarto-animate-title"></h2>
+<div class="logo-stage">
+<div class="title-logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- 5-zackiger EU-Stern -->
+    <g id="euro-star">
+      <polygon points="0,-4.5 1.3,-1.4 4.5,-1.4 1.9,0.6 2.9,3.8 0,1.8 -2.9,3.8 -1.9,0.6 -4.5,-1.4 -1.3,-1.4" fill="#172B40"></polygon>
+    </g>
+
+    <!-- 4 Sekundenstriche zwischen zwei vollen Stunden (im Euro-Grau) -->
+    <g id="sec-tick-group">
+      <line x1="180" y1="168" x2="180" y2="173" transform="rotate(6 180 256)"></line>
+      <line x1="180" y1="168" x2="180" y2="173" transform="rotate(12 180 256)"></line>
+      <line x1="180" y1="168" x2="180" y2="173" transform="rotate(18 180 256)"></line>
+      <line x1="180" y1="168" x2="180" y2="173" transform="rotate(24 180 256)"></line>
+    </g>
+
+    <style>
+.stroke-main {
+stroke: #172B40;
+stroke-linecap: round;
+stroke-linejoin: round;
+}
+
+
+
+#watch-slider {
+animation: watchSlide 3.5s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+}
+@keyframes watchSlide {
+0% { transform: translateX(76px); }
+53%, 84% { transform: translateX(0px); }
+100% { transform: translateX(76px); }
+}
+
+#watch-rotator {
+transform-origin: 180px 256px;
+animation: watchTurn 3.5s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+}
+@keyframes watchTurn {
+0% { transform: rotate(41.9deg); }
+53%, 84% { transform: rotate(0deg); }
+100% { transform: rotate(41.9deg); }
+}
+
+#hour-hand {
+transform-origin: 180px 256px;
+animation: hourAnim 3.5s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+}
+@keyframes hourAnim {
+0% { transform: rotate(180deg); }
+53%, 84% { transform: rotate(305deg); }
+100% { transform: rotate(180deg); }
+}
+
+#minute-hand {
+transform-origin: 180px 256px;
+animation: minuteAnim 3.5s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+}
+@keyframes minuteAnim {
+0% { transform: rotate(0deg); }
+53%, 84% { transform: rotate(420deg); }
+100% { transform: rotate(0deg); }
+}
+
+#coin-slider {
+animation: coinSlide 3.5s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+}
+@keyframes coinSlide {
+0% { transform: translateX(-76px); }
+53%, 84% { transform: translateX(0px); }
+100% { transform: translateX(-76px); }
+}
+
+#coin-rotator {
+transform-origin: 332px 256px;
+animation: coinRoll 3.5s cubic-bezier(0.2, 0.8, 0.3, 1) infinite;
+}
+@keyframes coinRoll {
+0% { transform: rotate(-41.9deg); }
+53%, 84% { transform: rotate(0deg); }
+100% { transform: rotate(-41.9deg); }
+}
+</style>
+  </defs>
+
+  <!-- ================= 1-EURO-MÜNZE (HINTER DER UHR, ROLLT NACH RECHTS) ================= -->
+  <g id="coin-slider">
+    <g id="coin-rotator">
+      <!-- Äußerer Goldring -->
+      <circle cx="332" cy="256" r="104" fill="#D8B773" stroke="#172B40" stroke-width="6"></circle>
+
+      <!-- Innerer Silberkern -->
+      <circle cx="332" cy="256" r="72" fill="#FFFFFF" stroke="#172B40" stroke-width="3"></circle>
+
+      <!-- Subtile Euro-Grau-Linien auf dem Kern -->
+      <g opacity="0.25">
+        <line x1="346" y1="222" x2="346" y2="290" stroke="#172B40" stroke-width="1.5" stroke-linecap="round"></line>
+        <line x1="356" y1="216" x2="356" y2="296" stroke="#172B40" stroke-width="1.5" stroke-linecap="round"></line>
+        <line x1="366" y1="214" x2="366" y2="298" stroke="#172B40" stroke-width="1.5" stroke-linecap="round"></line>
+        <line x1="376" y1="218" x2="376" y2="294" stroke="#172B40" stroke-width="1.5" stroke-linecap="round"></line>
+        <line x1="386" y1="226" x2="386" y2="286" stroke="#172B40" stroke-width="1.5" stroke-linecap="round"></line>
+      </g>
+
+      <!-- Die "1" (steht am Ende exakt senkrecht) -->
+      <path d="M 307 248
+           L 323 232
+           L 333 232
+           L 333 280
+           L 322 280
+           L 322 247
+           L 312 255 Z" fill="#172B40" />
+
+      <!-- "EURO"-Schriftzug -->
+      <text x="340" y="262" font-family="system-ui, -apple-system, BlinkMacSystemFont, &#39;Segoe UI&#39;, Roboto, &#39;Helvetica Neue&#39;, Arial, sans-serif" font-size="14.5" font-weight="900" letter-spacing="1.5" fill="#172B40">EURO</text>
+
+      <!-- 12 Sterne auf dem Goldring -->
+      <use href="#euro-star" x="332" y="168" />
+      <use href="#euro-star" x="376" y="180" />
+      <use href="#euro-star" x="408" y="212" />
+      <use href="#euro-star" x="420" y="256" />
+      <use href="#euro-star" x="408" y="300" />
+      <use href="#euro-star" x="376" y="332" />
+      <use href="#euro-star" x="332" y="344" />
+      <use href="#euro-star" x="288" y="332" />
+      <use href="#euro-star" x="256" y="300" />
+      <use href="#euro-star" x="244" y="256" />
+      <use href="#euro-star" x="256" y="212" />
+      <use href="#euro-star" x="288" y="180" />
+    </g>
+  </g>
+
+  <!-- ================= UHR (VORNE, ROLLT NACH LINKS) ================= -->
+  <g id="watch-slider">
+    <g id="watch-rotator">
+      <!-- Zifferblatt-Hintergrund -->
+      <circle cx="180" cy="256" r="104" fill="#FFFFFF" stroke="#172B40" stroke-width="6"></circle>
+
+      <!-- Sekundenstriche (im Euro-Grau) -->
+      <g stroke="#172B40" stroke-width="1.5" stroke-linecap="round" opacity="0.25">
+        <use href="#sec-tick-group" />
+        <use href="#sec-tick-group" transform="rotate(30 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(60 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(90 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(120 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(150 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(180 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(210 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(240 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(270 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(300 180 256)" />
+        <use href="#sec-tick-group" transform="rotate(330 180 256)" />
+      </g>
+
+      <!-- Haupt-Stundenstriche (12, 3, 6, 9) -->
+      <line x1="180" y1="166" x2="180" y2="181" class="stroke-main" stroke-width="4"></line>
+      <line x1="255" y1="256" x2="270" y2="256" class="stroke-main" stroke-width="4"></line>
+      <line x1="180" y1="331" x2="180" y2="346" class="stroke-main" stroke-width="4"></line>
+      <line x1="90" y1="256" x2="105" y2="256" class="stroke-main" stroke-width="4"></line>
+
+      <!-- Neben-Stundenstriche -->
+      <line x1="220" y1="186.7" x2="225" y2="178.1" class="stroke-main" stroke-width="2.5"></line>
+      <line x1="249.3" y1="216" x2="257.9" y2="211" class="stroke-main" stroke-width="2.5"></line>
+      <line x1="249.3" y1="296" x2="257.9" y2="301" class="stroke-main" stroke-width="2.5"></line>
+      <line x1="220" y1="325.3" x2="225" y2="333.9" class="stroke-main" stroke-width="2.5"></line>
+      <line x1="140" y1="325.3" x2="135" y2="333.9" class="stroke-main" stroke-width="2.5"></line>
+      <line x1="110.7" y1="296" x2="102.1" y2="301" class="stroke-main" stroke-width="2.5"></line>
+      <line x1="110.7" y1="216" x2="102.1" y2="211" class="stroke-main" stroke-width="2.5"></line>
+      <line x1="140" y1="186.7" x2="135" y2="178.1" class="stroke-main" stroke-width="2.5"></line>
+
+      <!-- Stundenzeiger (wandert relativ zum Zifferblatt von 6 auf 10 Uhr) -->
+      <line id="hour-hand" x1="180" y1="256" x2="180" y2="211" class="stroke-main" stroke-width="6.5"></line>
+
+      <!-- Minutenzeiger (wandert relativ zum Zifferblatt von 12 auf 2 Uhr) -->
+      <line id="minute-hand" x1="180" y1="256" x2="180" y2="198" class="stroke-main" stroke-width="6.5"></line>
+
+      <!-- Mittelpunkt-Abdeckung -->
+      <circle cx="180" cy="256" r="4" fill="#172B40"></circle>
+    </g>
+  </g>
+</svg>
+
 </div>
-
-</section>
-<section class="slide level2">
-
+</div>
+<h1 class="title">Introducing Münz</h1>
 <!--
 Time is money, but money can’t buy time
 -->
+</section>
+<section id="colors-slide" class="slide level2 center" data-auto-animate="true" data-auto-animate-id="brand" data-menu-title="Time and value">
+<h2 data-id="quarto-animate-title"></h2>
 <div class="color-intersection">
-<div class="color-orb time-orb">
+<div class="color-orb time-orb" data-id="time-orb">
 <h3>
 Time
 </h3>
@@ -1093,7 +1321,7 @@ Time
 #172B40
 </p>
 </div>
-<div class="color-orb value-orb">
+<div class="color-orb value-orb" data-id="value-orb">
 <h3>
 Value
 </h3>
@@ -2150,7 +2378,7 @@ window.QuartoSupport = function () {
         disableLayout: false,
 
         // Vertical centering of slides
-        center: false,
+        center: true,
 
         // Enables touch navigation on devices with touch input
         touch: true,
@@ -2279,6 +2507,71 @@ window.QuartoSupport = function () {
           RevealZoom
         ]
       });
+    </script>
+    <script>
+    (() => {
+      const duration = 2000;
+      const poses = [
+        ["#watch-slider", "translateX(76px)", "translateX(0px)"],
+        ["#watch-rotator", "rotate(41.9deg)", "rotate(0deg)"],
+        ["#hour-hand", "rotate(180deg)", "rotate(305deg)"],
+        ["#minute-hand", "rotate(0deg)", "rotate(420deg)"],
+        ["#coin-slider", "translateX(-76px)", "translateX(0px)"],
+        ["#coin-rotator", "rotate(-41.9deg)", "rotate(0deg)"],
+        ['[data-id="time-orb"]', "29.6875%", "14.84375%", "left"],
+        ['[data-id="value-orb"]', "29.6875%", "44.53125%", "left"]
+      ];
+
+      function setup() {
+        const title = document.getElementById("title-slide");
+        const stage = title.querySelector(".logo-stage");
+        const logo = stage.querySelector("svg");
+        logo.setAttribute("role", "img");
+        logo.setAttribute("aria-label", "Münz logo");
+        // Keep the shared SVG unchanged; control its motion only in this slide.
+        logo.querySelectorAll("style").forEach(style => style.remove());
+        document.querySelectorAll("#colors-slide .color-orb").forEach(orb => {
+          const copy = orb.cloneNode(false);
+          copy.setAttribute("aria-hidden", "true");
+          stage.insertBefore(copy, stage.firstChild);
+        });
+
+        let animations = [];
+        const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
+        function updateMotion() {
+          document.querySelectorAll('[data-auto-animate-id="brand"]').forEach(slide => {
+            if (reducedMotion.matches) slide.dataset.autoAnimateDuration = "0";
+            else delete slide.dataset.autoAnimateDuration;
+          });
+        }
+        updateMotion();
+        reducedMotion.addEventListener("change", updateMotion);
+
+        function enter() {
+          animations.forEach(animation => animation.cancel());
+          animations = poses.map(([selector, from, to, property = "transform"]) =>
+            stage.querySelector(selector).animate(
+            [{ [property]: from }, { [property]: to }],
+            {
+              duration: reducedMotion.matches ? 0 : duration,
+              easing: "cubic-bezier(0.2, 0.8, 0.3, 1)",
+              fill: "forwards"
+            }
+          ));
+        }
+
+        Reveal.on("slidechanged", event => {
+          if (event.currentSlide === title) enter();
+        });
+
+        if (Reveal.getCurrentSlide() === title) enter();
+      }
+
+      window.addEventListener("load", () => {
+        if (Reveal.isReady()) setup();
+        else Reveal.on("ready", setup);
+      });
+    })();
     </script>
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {

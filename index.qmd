@@ -1,22 +1,38 @@
 ---
-title: "Introducing Münz"
+pagetitle: "Introducing Münz"
 format:
   revealjs:
     embed-resources: true
+    center: true
+    transition: none
     css: styles.css
     include-in-header: google-fonts.html
+    include-after-body: logo-animation.html
 ---
+
+## {#title-slide .center auto-animate="true" auto-animate-id="brand" data-menu-title="Introducing Münz"}
+
+```{=html}
+<div class="logo-stage">
+<div class="title-logo">
+{{< include assets/logo3.svg >}}
+</div>
+</div>
+<h1 class="title">Introducing Münz</h1>
+```
 
 <!--
 Time is money, but money can’t buy time
 -->
 
+## {#colors-slide auto-animate="true" auto-animate-id="brand" data-menu-title="Time and value"}
+
 <div class="color-intersection">
-<div class="color-orb time-orb">
+<div class="color-orb time-orb" data-id="time-orb">
 <h3>Time</h3>
 <p class="color-hex">#172B40</p>
 </div>
-<div class="color-orb value-orb">
+<div class="color-orb value-orb" data-id="value-orb">
 <h3>Value</h3>
 <p class="color-hex">#D8B773</p>
 </div>
