@@ -562,7 +562,10 @@ font-weight: 600;
 font-size: 1.6em;
 }
 .reveal .color-intersection {
+position: relative;
 display: flex;
+width: max-content;
+margin: 0 auto;
 justify-content: center;
 align-items: center;
 min-height: 430px;
@@ -580,6 +583,38 @@ aspect-ratio: 1;
 padding: clamp(2rem, 5vw, 3.5rem);
 border-radius: 50%;
 text-align: center;
+}
+.reveal .orb-note {
+position: absolute;
+top: calc(50% - 180px);
+display: flex;
+flex-direction: column;
+justify-content: flex-end;
+width: 170px;
+height: 180px;
+color: #172b40;
+}
+.reveal .time-note {
+right: calc(100% + 16px);
+}
+.reveal .value-note {
+left: calc(100% + 16px);
+}
+.reveal .orb-note p {
+margin: 0;
+font-size: 0.55em;
+line-height: 1.35;
+opacity: 1;
+}
+.reveal .orb-note svg {
+flex: 0 0 100px;
+width: 170px;
+height: 100px;
+fill: none;
+stroke: currentColor;
+stroke-width: 2.5;
+stroke-linecap: round;
+stroke-linejoin: round;
 }
 .reveal .color-orb h3 {
 margin: 0;
@@ -1332,6 +1367,14 @@ Time
 #172B40
 </p>
 </div>
+<div class="orb-note time-note fragment" data-fragment-index="0">
+<p>
+Time is money
+</p>
+<svg viewbox="0 0 170 100" aria-hidden="true">
+<path d="M 18 8 C 8 33, 28 62, 62 69 S 127 77, 166 95 M 148 78 L 166 95 L 143 96" />
+</svg>
+</div>
 <div class="color-orb value-orb" data-id="value-orb">
 <h3>
 Value
@@ -1339,6 +1382,14 @@ Value
 <p class="color-hex">
 #D8B773
 </p>
+</div>
+<div class="orb-note value-note fragment" data-fragment-index="1">
+<p>
+But money can’t buy you time
+</p>
+<svg viewbox="0 0 170 100" aria-hidden="true">
+<path d="M 151 9 C 166 35, 143 61, 112 70 S 42 76, 4 95 M 23 77 L 4 95 L 28 96" />
+</svg>
 </div>
 </div>
 
