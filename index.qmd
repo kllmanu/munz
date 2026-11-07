@@ -62,6 +62,7 @@ Your browser does not support video playback.
 </p>
 <p class="here-step fragment" data-fragment-index="4">You are here</p>
 <h2 class="here-headline fragment" data-fragment-index="4">„Find my time“</h2>
+<p class="here-subtitle fragment" data-fragment-index="4">But Münz will (hopefully)</p>
 <div class="definition-step fragment" data-fragment-index="5">
 <h2 class="definition-headline">App definition statement</h2>
 <div class="definition-logo title-logo"></div>
@@ -69,12 +70,34 @@ Your browser does not support video playback.
 </div>
 </div>
 
-## Features {.app-section}
+## Features {#features-slide .app-section}
+
+- Getting started screen
+- Track the time spent
+- Your time (overview)
+- Settings and preferences
+- Store data on the blockchain
+- Notifications to break bad habits
 
 ## Navigation {.app-section}
 
 ## Components {.app-section}
 
----
+## {#closing-slide .center data-menu-title="Thank you"}
 
-Thank you for your attention on this matter.
+<h2 class="closing-title">Thank you for your time.</h2>
+
+::: {.closing-note}
+Made with sweat, love and my brain. And some AI.
+:::
+
+::: {.credits}
+
+- [GitHub Copilot](https://github.com/features/copilot)
+- [Google AI Studio](https://ai.google/studio/)
+- [Quarto](https://quarto.org/)
+- [Reveal.js](https://revealjs.com/)
+
+Video by [cottonbro studio on Pexels](https://www.pexels.com/video/a-woman-pointing-at-a-map-and-talking-while-inside-a-moving-car-5966551/).
+
+:::

@@ -502,6 +502,81 @@ color: rgba(23, 43, 64, 0.25);
 font-size: 0.5em;
 font-weight: 400;
 }
+#features-slide > h2 {
+margin: 0 0 3rem;
+}
+#features-slide > ul {
+display: grid;
+grid-template-columns: repeat(2, minmax(0, 1fr));
+gap: 2.5rem 3.5rem;
+width: 90%;
+margin: 0 auto;
+padding: 0;
+list-style: none;
+color: #172b40;
+font-size: 0.7em;
+line-height: 1.35;
+text-align: left;
+}
+#features-slide > ul > li {
+display: flex;
+align-items: center;
+min-height: 3em;
+margin: 0;
+padding: 0 0 0 1.25rem;
+border-left: 3px solid #d8b773;
+font-weight: 500;
+}
+@media (max-width: 600px) {
+#features-slide > h2 {
+margin-bottom: 1.5rem;
+}
+#features-slide > ul {
+grid-template-columns: 1fr;
+gap: 0.75rem;
+font-size: 0.6em;
+}
+#features-slide > ul > li {
+min-height: 2em;
+}
+}
+#closing-slide > h2:empty {
+display: none;
+}
+#closing-slide .closing-title {
+margin: 0;
+color: #172b40;
+font-size: 1.25em;
+font-weight: 600;
+line-height: 1.25;
+text-align: center;
+}
+.reveal .closing-note {
+margin-top: 1.5rem;
+color: #172b40;
+font-size: 0.5em;
+text-align: center;
+}
+.reveal .credits {
+margin-top: 4rem;
+color: #687580;
+font-size: 0.4em;
+text-align: center;
+}
+.reveal .credits ul {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 0.5rem 1.5rem;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+.reveal .credits a {
+color: inherit;
+text-decoration: underline;
+text-underline-offset: 0.15em;
+}
 #title-slide .logo-stage {
 position: relative;
 width: clamp(12rem, 26vw, 18rem);
@@ -636,6 +711,17 @@ color: #172b40;
 font-size: 0.6em;
 text-align: center;
 }
+.reveal .here-subtitle {
+position: absolute;
+top: calc(50% - var(--orb-size) / 2 - 1.5rem);
+left: 0;
+width: 100%;
+margin: 0;
+color: rgba(23, 43, 64, 0.5);
+font-size: 0.5em;
+font-weight: 400;
+text-align: center;
+}
 .reveal .definition-step {
 position: absolute;
 inset: 0;
@@ -669,7 +755,8 @@ text-align: center;
 }
 #colors-slide:has(.definition-step.visible) .color-orb,
 #colors-slide:has(.definition-step.visible) .here-step,
-#colors-slide:has(.definition-step.visible) .here-headline {
+#colors-slide:has(.definition-step.visible) .here-headline,
+#colors-slide:has(.definition-step.visible) .here-subtitle {
 opacity: 0 !important;
 visibility: hidden !important;
 }
@@ -1588,6 +1675,9 @@ You are here
 <h2 class="here-headline fragment" data-fragment-index="4">
 „Find my time“
 </h2>
+<p class="here-subtitle fragment" data-fragment-index="4">
+But Münz will (hopefully)
+</p>
 <div class="definition-step fragment" data-fragment-index="5">
 <h2 class="definition-headline">
 App definition statement
@@ -1601,8 +1691,16 @@ Münz is a <strong>time tracking app</strong> for impulsive spenders<br>It won�
 </div>
 </div>
 </section>
-<section id="features" class="slide level2 app-section center">
+<section id="features-slide" class="slide level2 app-section center">
 <h2>Features</h2>
+<ul>
+<li>Getting started screen</li>
+<li>Track the time spent</li>
+<li>Your time (overview)</li>
+<li>Settings and preferences</li>
+<li>Store data on the blockchain</li>
+<li>Notifications to break bad habits</li>
+</ul>
 </section>
 <section id="navigation" class="slide level2 app-section center">
 <h2>Navigation</h2>
@@ -1610,9 +1708,23 @@ Münz is a <strong>time tracking app</strong> for impulsive spenders<br>It won�
 <section id="components" class="slide level2 app-section center">
 <h2>Components</h2>
 </section>
-<section class="slide level2 center">
-
-<p>Thank you for your attention on this matter.</p>
+<section id="closing-slide" class="slide level2 center" data-menu-title="Thank you">
+<h2></h2>
+<h2 class="closing-title">
+Thank you for your time.
+</h2>
+<div class="closing-note">
+<p>Made with sweat, love and my brain. And some AI.</p>
+</div>
+<div class="credits">
+<ul>
+<li><a href="https://github.com/features/copilot">GitHub Copilot</a></li>
+<li><a href="https://ai.google/studio/">Google AI Studio</a></li>
+<li><a href="https://quarto.org/">Quarto</a></li>
+<li><a href="https://revealjs.com/">Reveal.js</a></li>
+</ul>
+<p>Video by <a href="https://www.pexels.com/video/a-woman-pointing-at-a-map-and-talking-while-inside-a-moving-car-5966551/">cottonbro studio on Pexels</a>.</p>
+</div>
 
 </section>
     </div>
