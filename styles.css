@@ -162,6 +162,51 @@
   text-align: center;
 }
 
+.reveal .definition-step {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.reveal .definition-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(12rem, 26vw, 18rem);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%) scale(0.06);
+  transition: transform 0.7s ease;
+}
+
+.reveal .definition-step.visible .definition-logo {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.reveal .app-definition {
+  position: absolute;
+  top: calc(50% + clamp(12rem, 26vw, 18rem) / 2 + 1rem);
+  left: 50%;
+  width: 800px;
+  max-width: 90vw;
+  margin: 0;
+  transform: translateX(-50%);
+  color: #172b40;
+  font-size: 0.6em;
+  line-height: 1.5;
+  text-align: center;
+}
+
+#colors-slide:has(.definition-step.visible) .color-orb,
+#colors-slide:has(.definition-step.visible) .here-step {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+#colors-slide:has(.here-step.visible):has(.definition-step.visible) .color-intersection::after {
+  content: none;
+}
+
 #colors-slide:has(.here-step.visible) .color-orb {
   scale: 0.06;
   transform-origin: center !important;
@@ -211,6 +256,10 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .reveal .definition-logo {
+    transition: none;
+  }
+
   #colors-slide .color-orb {
     transition: none !important;
   }

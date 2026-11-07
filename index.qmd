@@ -58,6 +58,11 @@ Your browser does not support video playback.
 </video>
 </div>
 <p class="video-error" role="alert" hidden></p>
-<p class="time-message fragment" data-fragment-index="3">Living paycheck to paycheck is a problem of the past. Münz is a budgeting app that wants you to think in time and earn yourself a future.</p>
+<p class="time-message fragment" data-fragment-index="3">Chasing budgets and savings won’t save you from getting lost.
+</p>
 <p class="here-step fragment" data-fragment-index="4">You are here</p>
+<div class="definition-step fragment" data-fragment-index="5">
+<div class="definition-logo title-logo"></div>
+<p class="app-definition">Münz is a time tracking app for impulsive spenders<br>that won't save you time, but budget. And sanity.</p>
+</div>
 </div>

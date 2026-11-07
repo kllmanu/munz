@@ -629,6 +629,45 @@ color: #172b40;
 font-size: 0.6em;
 text-align: center;
 }
+.reveal .definition-step {
+position: absolute;
+inset: 0;
+z-index: 4;
+pointer-events: none;
+}
+.reveal .definition-logo {
+position: absolute;
+top: 50%;
+left: 50%;
+width: clamp(12rem, 26vw, 18rem);
+aspect-ratio: 1;
+transform: translate(-50%, -50%) scale(0.06);
+transition: transform 0.7s ease;
+}
+.reveal .definition-step.visible .definition-logo {
+transform: translate(-50%, -50%) scale(1);
+}
+.reveal .app-definition {
+position: absolute;
+top: calc(50% + clamp(12rem, 26vw, 18rem) / 2 + 1rem);
+left: 50%;
+width: 800px;
+max-width: 90vw;
+margin: 0;
+transform: translateX(-50%);
+color: #172b40;
+font-size: 0.6em;
+line-height: 1.5;
+text-align: center;
+}
+#colors-slide:has(.definition-step.visible) .color-orb,
+#colors-slide:has(.definition-step.visible) .here-step {
+opacity: 0 !important;
+visibility: hidden !important;
+}
+#colors-slide:has(.here-step.visible):has(.definition-step.visible) .color-intersection::after {
+content: none;
+}
 #colors-slide:has(.here-step.visible) .color-orb {
 scale: 0.06;
 transform-origin: center !important;
@@ -672,6 +711,9 @@ visibility: hidden !important;
 pointer-events: none;
 }
 @media (prefers-reduced-motion: reduce) {
+.reveal .definition-logo {
+transition: none;
+}
 #colors-slide .color-orb {
 transition: none !important;
 }
@@ -1530,11 +1572,19 @@ Your browser does not support video playback.
 <p class="video-error" role="alert" hidden>
 </p>
 <p class="time-message fragment" data-fragment-index="3">
-Living paycheck to paycheck is a problem of the past. Münz is a budgeting app that wants you to think in time and earn yourself a future.
+Chasing budgets and savings won’t save you from getting lost.
 </p>
 <p class="here-step fragment" data-fragment-index="4">
 You are here
 </p>
+<div class="definition-step fragment" data-fragment-index="5">
+<div class="definition-logo title-logo">
+
+</div>
+<p class="app-definition">
+Münz is a time tracking app for impulsive spenders<br>that won’t save you time, but budget. And sanity.
+</p>
+</div>
 </div>
 
 </section>
@@ -2764,10 +2814,51 @@ window.QuartoSupport = function () {
         video.addEventListener("error", () => showVideoError(video.error));
 
         const hereStep = document.querySelector(".here-step");
+        const definitionStep = document.querySelector(".definition-step");
+        const definitionLogo = logo.cloneNode(true);
+        // Namespace the second inline SVG so its references cannot target the title logo.
+        definitionLogo.querySelectorAll("[id]").forEach(element => {
+          element.id = `definition-${element.id}`;
+        });
+        definitionLogo.querySelectorAll("[href]").forEach(element => {
+          const href = element.getAttribute("href");
+          if (href.startsWith("#")) element.setAttribute("href", `#definition-${href.slice(1)}`);
+        });
+        document.querySelector(".definition-logo").appendChild(definitionLogo);
+        let definitionAnimations = [];
+        function resetDefinition() {
+          definitionAnimations.forEach(animation => animation.cancel());
+          definitionAnimations = [];
+          poses.slice(0, 6).forEach(([selector, from]) => {
+            const element = definitionLogo.querySelector(`#definition-${selector.slice(1)}`);
+            element.style.transform = from;
+            if (selector === "#coin-rotator") element.style.transformOrigin = "332px 256px";
+            else if (selector !== "#watch-slider" && selector !== "#coin-slider") {
+              element.style.transformOrigin = "180px 256px";
+            }
+          });
+        }
+        function animateDefinition() {
+          resetDefinition();
+          definitionAnimations = poses.slice(0, 6).map(([selector, from, to]) =>
+            definitionLogo.querySelector(`#definition-${selector.slice(1)}`).animate(
+              [{ transform: from }, { transform: to }],
+              {
+                duration: reducedMotion.matches ? 0 : duration,
+                delay: reducedMotion.matches ? 0 : 700,
+                easing: "cubic-bezier(0.2, 0.8, 0.3, 1)",
+                fill: "forwards"
+              }
+            )
+          );
+        }
+        resetDefinition();
         Reveal.on("fragmentshown", event => {
           if (event.fragments.includes(hereStep)) video.pause();
+          if (event.fragments.includes(definitionStep)) animateDefinition();
         });
         Reveal.on("fragmenthidden", event => {
+          if (event.fragments.includes(definitionStep)) resetDefinition();
           if (event.fragments.includes(hereStep) &&
               video.closest(".fragment").classList.contains("visible") &&
               Reveal.getCurrentSlide().id === "colors-slide") {
@@ -2790,9 +2881,15 @@ window.QuartoSupport = function () {
 
         Reveal.on("slidechanged", event => {
           if (event.currentSlide === title) enter();
+          if (event.currentSlide.id === "colors-slide" && definitionStep.classList.contains("visible")) {
+            animateDefinition();
+          } else {
+            resetDefinition();
+          }
         });
 
         if (Reveal.getCurrentSlide() === title) enter();
+        if (definitionStep.classList.contains("visible")) animateDefinition();
       }
 
       window.addEventListener("load", () => {

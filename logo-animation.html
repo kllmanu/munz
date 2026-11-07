@@ -48,10 +48,51 @@
     video.addEventListener("error", () => showVideoError(video.error));
 
     const hereStep = document.querySelector(".here-step");
+    const definitionStep = document.querySelector(".definition-step");
+    const definitionLogo = logo.cloneNode(true);
+    // Namespace the second inline SVG so its references cannot target the title logo.
+    definitionLogo.querySelectorAll("[id]").forEach(element => {
+      element.id = `definition-${element.id}`;
+    });
+    definitionLogo.querySelectorAll("[href]").forEach(element => {
+      const href = element.getAttribute("href");
+      if (href.startsWith("#")) element.setAttribute("href", `#definition-${href.slice(1)}`);
+    });
+    document.querySelector(".definition-logo").appendChild(definitionLogo);
+    let definitionAnimations = [];
+    function resetDefinition() {
+      definitionAnimations.forEach(animation => animation.cancel());
+      definitionAnimations = [];
+      poses.slice(0, 6).forEach(([selector, from]) => {
+        const element = definitionLogo.querySelector(`#definition-${selector.slice(1)}`);
+        element.style.transform = from;
+        if (selector === "#coin-rotator") element.style.transformOrigin = "332px 256px";
+        else if (selector !== "#watch-slider" && selector !== "#coin-slider") {
+          element.style.transformOrigin = "180px 256px";
+        }
+      });
+    }
+    function animateDefinition() {
+      resetDefinition();
+      definitionAnimations = poses.slice(0, 6).map(([selector, from, to]) =>
+        definitionLogo.querySelector(`#definition-${selector.slice(1)}`).animate(
+          [{ transform: from }, { transform: to }],
+          {
+            duration: reducedMotion.matches ? 0 : duration,
+            delay: reducedMotion.matches ? 0 : 700,
+            easing: "cubic-bezier(0.2, 0.8, 0.3, 1)",
+            fill: "forwards"
+          }
+        )
+      );
+    }
+    resetDefinition();
     Reveal.on("fragmentshown", event => {
       if (event.fragments.includes(hereStep)) video.pause();
+      if (event.fragments.includes(definitionStep)) animateDefinition();
     });
     Reveal.on("fragmenthidden", event => {
+      if (event.fragments.includes(definitionStep)) resetDefinition();
       if (event.fragments.includes(hereStep) &&
           video.closest(".fragment").classList.contains("visible") &&
           Reveal.getCurrentSlide().id === "colors-slide") {
@@ -74,9 +115,15 @@
 
     Reveal.on("slidechanged", event => {
       if (event.currentSlide === title) enter();
+      if (event.currentSlide.id === "colors-slide" && definitionStep.classList.contains("visible")) {
+        animateDefinition();
+      } else {
+        resetDefinition();
+      }
     });
 
     if (Reveal.getCurrentSlide() === title) enter();
+    if (definitionStep.classList.contains("visible")) animateDefinition();
   }
 
   window.addEventListener("load", () => {
