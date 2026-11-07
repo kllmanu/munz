@@ -83,6 +83,12 @@ Your browser does not support video playback.
 
 ## Components {.app-section}
 
+- Logo
+- Button
+- Headline
+- TrackingList
+- TrackingListItem
+
 ## {#closing-slide .center data-menu-title="Thank you"}
 
 <h2 class="closing-title">Thank you for your time.</h2>

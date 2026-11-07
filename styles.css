@@ -19,7 +19,7 @@
   height: 100%;
 }
 
-#features-slide > ul {
+.reveal .app-section > ul {
   position: absolute;
   top: calc(50% - var(--orb-size) / 2 + 1rem);
   left: 50%;
