@@ -38,12 +38,25 @@
     reducedMotion.addEventListener("change", updateMotion);
 
     const video = document.querySelector(".orb-video video");
-    video.addEventListener("error", () => {
-      const message = "Unable to load the Track of time video.";
-      console.error(message, video.error);
+    function showVideoError(error) {
+      const message = "Unable to play the Track of time video.";
+      console.error(message, error);
       const status = document.querySelector(".video-error");
       status.textContent = message;
       status.hidden = false;
+    }
+    video.addEventListener("error", () => showVideoError(video.error));
+
+    const hereStep = document.querySelector(".here-step");
+    Reveal.on("fragmentshown", event => {
+      if (event.fragments.includes(hereStep)) video.pause();
+    });
+    Reveal.on("fragmenthidden", event => {
+      if (event.fragments.includes(hereStep) &&
+          video.closest(".fragment").classList.contains("visible") &&
+          Reveal.getCurrentSlide().id === "colors-slide") {
+        video.play().catch(showVideoError);
+      }
     });
 
     function enter() {

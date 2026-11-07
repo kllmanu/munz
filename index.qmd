@@ -59,4 +59,5 @@ Your browser does not support video playback.
 </div>
 <p class="video-error" role="alert" hidden></p>
 <p class="time-message fragment" data-fragment-index="3">Living paycheck to paycheck is a problem of the past. Münz is a budgeting app that wants you to think in time and earn yourself a future.</p>
+<p class="here-step fragment" data-fragment-index="4">You are here</p>
 </div>

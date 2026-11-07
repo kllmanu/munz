@@ -1,6 +1,7 @@
 .reveal-viewport,
 .reveal {
   --orb-size: clamp(16rem, 35vw, 23rem);
+  --orb-overlap: 5rem;
   --r-main-font: "IBM Plex Sans", sans-serif;
   --r-heading-font: "IBM Plex Sans", sans-serif;
   font-family: "IBM Plex Sans", sans-serif;
@@ -141,6 +142,49 @@
   text-align: center;
 }
 
+#colors-slide .color-orb {
+  transition: translate 0.8s ease, scale 0.8s ease, background-color 0.8s ease;
+}
+
+.reveal .here-step {
+  position: absolute;
+  top: calc(50% + 1.5rem);
+  left: 0;
+  width: 100%;
+  margin: 0;
+  color: #172b40;
+  font-size: 0.6em;
+  text-align: center;
+}
+
+#colors-slide:has(.here-step.visible) .color-orb {
+  scale: 0.06;
+  transform-origin: center !important;
+  background-color: #d62828 !important;
+  border-color: transparent !important;
+}
+
+#colors-slide:has(.here-step.visible) .time-orb {
+  translate: calc((var(--orb-size) - var(--orb-overlap)) / 2) 0;
+}
+
+#colors-slide:has(.here-step.visible) .value-orb {
+  translate: calc((var(--orb-overlap) - var(--orb-size)) / 2) 0;
+}
+
+#colors-slide:has(.here-step.visible) :is(.orb-note, .time-headline, .time-message, .orb-video, .video-error),
+#colors-slide:has(.here-step.visible) .color-orb > * {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #colors-slide .color-orb {
+    transition: none;
+  }
+}
+
 .reveal .orb-video {
   position: absolute;
   z-index: 3;
@@ -247,7 +291,7 @@
 
 .reveal .time-orb {
   z-index: 2;
-  margin-right: -5rem;
+  margin-right: calc(-1 * var(--orb-overlap));
   border: 1px solid rgba(255, 255, 255, 0.28);
   background: #172b40;
   color: #fff;
@@ -256,6 +300,7 @@
 @media (max-width: 600px) {
   .reveal {
     --orb-size: 52vw;
+    --orb-overlap: 3rem;
   }
 
   .reveal .color-intersection {
@@ -266,7 +311,4 @@
     padding: 1.5rem;
   }
 
-  .reveal .time-orb {
-    margin-right: -3rem;
-  }
 }

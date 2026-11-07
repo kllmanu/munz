@@ -490,6 +490,7 @@ margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
   <style type="text/css">.reveal-viewport,
 .reveal {
 --orb-size: clamp(16rem, 35vw, 23rem);
+--orb-overlap: 5rem;
 --r-main-font: "IBM Plex Sans", sans-serif;
 --r-heading-font: "IBM Plex Sans", sans-serif;
 font-family: "IBM Plex Sans", sans-serif;
@@ -611,6 +612,42 @@ font-size: 0.6em;
 line-height: 1.5;
 text-align: center;
 }
+#colors-slide .color-orb {
+transition: translate 0.8s ease, scale 0.8s ease, background-color 0.8s ease;
+}
+.reveal .here-step {
+position: absolute;
+top: calc(50% + 1.5rem);
+left: 0;
+width: 100%;
+margin: 0;
+color: #172b40;
+font-size: 0.6em;
+text-align: center;
+}
+#colors-slide:has(.here-step.visible) .color-orb {
+scale: 0.06;
+transform-origin: center !important;
+background-color: #d62828 !important;
+border-color: transparent !important;
+}
+#colors-slide:has(.here-step.visible) .time-orb {
+translate: calc((var(--orb-size) - var(--orb-overlap)) / 2) 0;
+}
+#colors-slide:has(.here-step.visible) .value-orb {
+translate: calc((var(--orb-overlap) - var(--orb-size)) / 2) 0;
+}
+#colors-slide:has(.here-step.visible) :is(.orb-note, .time-headline, .time-message, .orb-video, .video-error),
+#colors-slide:has(.here-step.visible) .color-orb > * {
+opacity: 0 !important;
+visibility: hidden !important;
+pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+#colors-slide .color-orb {
+transition: none;
+}
+}
 .reveal .orb-video {
 position: absolute;
 z-index: 3;
@@ -704,7 +741,7 @@ color: #172b40;
 }
 .reveal .time-orb {
 z-index: 2;
-margin-right: -5rem;
+margin-right: calc(-1 * var(--orb-overlap));
 border: 1px solid rgba(255, 255, 255, 0.28);
 background: #172b40;
 color: #fff;
@@ -712,15 +749,13 @@ color: #fff;
 @media (max-width: 600px) {
 .reveal {
 --orb-size: 52vw;
+--orb-overlap: 3rem;
 }
 .reveal .color-intersection {
 min-height: 0;
 }
 .reveal .color-orb {
 padding: 1.5rem;
-}
-.reveal .time-orb {
-margin-right: -3rem;
 }
 }
 </style>
@@ -1465,6 +1500,9 @@ Your browser does not support video playback.
 </p>
 <p class="time-message fragment" data-fragment-index="3">
 Living paycheck to paycheck is a problem of the past. Münz is a budgeting app that wants you to think in time and earn yourself a future.
+</p>
+<p class="here-step fragment" data-fragment-index="4">
+You are here
 </p>
 </div>
 
@@ -2685,12 +2723,25 @@ window.QuartoSupport = function () {
         reducedMotion.addEventListener("change", updateMotion);
 
         const video = document.querySelector(".orb-video video");
-        video.addEventListener("error", () => {
-          const message = "Unable to load the Track of time video.";
-          console.error(message, video.error);
+        function showVideoError(error) {
+          const message = "Unable to play the Track of time video.";
+          console.error(message, error);
           const status = document.querySelector(".video-error");
           status.textContent = message;
           status.hidden = false;
+        }
+        video.addEventListener("error", () => showVideoError(video.error));
+
+        const hereStep = document.querySelector(".here-step");
+        Reveal.on("fragmentshown", event => {
+          if (event.fragments.includes(hereStep)) video.pause();
+        });
+        Reveal.on("fragmenthidden", event => {
+          if (event.fragments.includes(hereStep) &&
+              video.closest(".fragment").classList.contains("visible") &&
+              Reveal.getCurrentSlide().id === "colors-slide") {
+            video.play().catch(showVideoError);
+          }
         });
 
         function enter() {
